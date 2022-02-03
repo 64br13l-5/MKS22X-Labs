@@ -20,30 +20,34 @@ public class Recursion{
           *@param letters: the letters you should be using,
           *@precondition: letters contains at least 2 characters, and has no duplicates.
           */
-public static void printNoDoubleLetterWords(int length,char[] letters){
-    printNoDoubleLetterWords(length,"",letters);
-}
+          public static void printNoDoubleLetterWords(int length,char[] letters){
+              printNoDoubleLetterWords(length,"",letters);
+          }
 
-          /*Print all words that are made of the characters in letters. There may not be consecutive equal letters,
-          *aax is not allowed, but axa is allowed.
-          *@param length : either how many more letters need to be
-          *@param word   : the partial word so far.
-          *@param letters: the letters you should be using
-          */
-public static void printNoDoubleLetterWords(int length,String word,char[]letters){
-  if(length == word.length()){
-  System.out.println(word);
-  }
-  else{
-  for(char c : letters){
-  if((word.length() == 0) || (word.charAt(word.length()-1) != c ))
-  printNoDoubleLetterWords(length,word + (c),letters);
-}
-  }
-}
+                    /*Print all words that are made of the characters in letters. There may not be consecutive equal letters,
+                    *aax is not allowed, but axa is allowed.
+                    *@param length : either how many more letters need to be
+                    *@param word   : the partial word so far.
+                    *@param letters: the letters you should be using
+                    */
+          public static void printNoDoubleLetterWords(int length,String word,char[]letters){
+            if(length == word.length()){
+            System.out.println(word);
+            }
+            else{
+            for(char c : letters){
+            if((word.length() == 0) || (word.charAt(word.length()-1) != c ))
+            printNoDoubleLetterWords(length,word + (c),letters);
+          }
+            }
+          }
   public static void main(String[] args){
     char[] x=  {'a','3','i'};
     printNoDoubleLetterWords(3,"",x );
+    printAllWords(2);
+      char[] y=   {'a','b','c'};
+    printNoDoubleLetterWords(2,y);
+    printNoDoubleLetterWords(3,y);
 
   }
 }
