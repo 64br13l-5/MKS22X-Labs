@@ -41,13 +41,21 @@ public class Recursion{
           }
             }
           }
-  public static void main(String[] args){
-    char[] x=  {'a','3','i'};
-    printNoDoubleLetterWords(3,"",x );
-    printAllWords(2);
-      char[] y=   {'a','b','c'};
-    printNoDoubleLetterWords(2,y);
-    printNoDoubleLetterWords(3,y);
+          /*
+          *@param s any string
+          *@return a string that is the reversed version of s, do NOT use built in methods to do so, use recursion.
+          */
+          public static String reverse(String s){
+            if(s.length() == 0) return "";
+            return reverse(s.substring(1)) +s.charAt(0);}
 
+  public static void main(String[] args){
+    // char[] x=  {'a','3','i'};
+    // printNoDoubleLetterWords(3,"",x );
+    // printAllWords(2);
+    //   char[] y=   {'a','b','c'};
+    // printNoDoubleLetterWords(2,y);
+    // printNoDoubleLetterWords(3,y);
+    System.out.println(reverse("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
   }
 }
