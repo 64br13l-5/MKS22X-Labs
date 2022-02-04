@@ -39,7 +39,7 @@ public static double sqrt(double n){
                   //Hint: This is a wrapper method.
 }
 public static double sqrt(double n,double guess){
-  if((Math.abs(n-(guess*guess)) /n ) < 0.01) return guess;
+  if((Math.abs(n-(guess*guess)) /n ) < 0.0001) return guess;
   return sqrt(n, ( n / guess + guess) / 2);
 }
   public static void main(String[] args){
