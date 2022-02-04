@@ -38,11 +38,23 @@ public static double sqrt(double n){
     return sqrt(n, 1);
                   //Hint: This is a wrapper method.
 }
+
 public static double sqrt(double n,double guess){
   if((Math.abs(n-(guess*guess)) /n ) < 0.0001) return guess;
   return sqrt(n, ( n / guess + guess) / 2);
 }
-  public static void main(String[] args){
+
+public static long countNoDoubleLetterWords(int length,String word){
+  if(length == word.length()){
+    return 0l;
+  }
+  for(char c = 'a'; c <= 'z'; c++){
+  if((word.length() == 0) || (word.charAt(word.length()-1) != c ))
+  return 1l + countNoDoubleLetterWords(length,word + (c));
+}return 01;
+}
+
+public static void main(String[] args){
     // char[] x=  {'a','3','i'};
     // printNoDoubleLetterWords(3,"",x );
     // printAllWords(2);
