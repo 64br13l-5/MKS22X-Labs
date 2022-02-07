@@ -45,16 +45,21 @@ public static double sqrt(double n,double guess){
 }
 
 public static long countNoDoubleLetterWords(int length,String word){
+  long num = 0l;
   if(length == word.length()){
     return 1l;
   }
   for(char c = 'a'; c <= 'z'; c++){
   if((word.length() == 0) || (word.charAt(word.length()-1) != c ))
-  return countNoDoubleLetterWords(length,word + (c));
+    num+= countNoDoubleLetterWords(length,word + (c));
 }
-return 0l;
+return num;
 }
+public static int fibIter(int n, int f1, int f2){
+  if (n==0) return f2;
+  return fibIter(n-1,f1+f2,f1);
 
+}
 public static void main(String[] args){
     // char[] x=  {'a','3','i'};
     // printNoDoubleLetterWords(3,"",x );
@@ -63,6 +68,6 @@ public static void main(String[] args){
     // printNoDoubleLetterWords(2,y);
     // printNoDoubleLetterWords(3,y);
     //System.out.println(reverse("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-    System.out.println(countNoDoubleLetterWords(2,""));
+    System.out.println(fibIter(4,1,0));
   }
 }
