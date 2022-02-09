@@ -13,7 +13,7 @@ public  class Recursion4Real{
 }
 public static boolean groupSum6(int start, int[] nums, int target) {
 //just PartialSum
-groupSum6(start,nums,target,false)
+return groupSum6(start,nums,target,false);
 }
 public static boolean groupSum6(int start, int[] nums, int target,boolean has6) {
 //just PartialSum
