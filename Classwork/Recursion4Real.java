@@ -11,6 +11,14 @@ public  class Recursion4Real{
   if(start == nums.length-1)return false;
   return (groupSum(start+1,nums,target-nums[start]) ||  groupSum(start+1,nums,target));
 }
+public static boolean groupSum6(int start, int[] nums, int target) {
+//just PartialSum
+if(nums.length == 0) return target == 0;
+if(nums.length == 1) return target == 0 || target == nums[0];
+if(target-nums[start] == 0 )return true;
+if(start == nums.length-1)return false;
+return (groupSum6(start+1,nums,target-nums[start]) ||  groupSum6(start+1,nums,target));
+}
 public static boolean splitArray(int[] nums) {
   return splitArray(0,0,0,nums);
 }
