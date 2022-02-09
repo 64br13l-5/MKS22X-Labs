@@ -11,4 +11,9 @@ public  class Recursion4Real{
   if(start == nums.length-1)return false;
   return (groupSum(start+1,nums,target-nums[start]) ||  groupSum(start+1,nums,target));
 }
+public static boolean splitArray(int[] nums) {
+}
+public static boolean splitArray(int start, int[] nums, int target, int target)
+if(start == nums.length-1)return target = target2;
+
 }
