@@ -1,7 +1,7 @@
 public  class Recursion4Real{
   public static void main (String[] args){
-    int[] arr = {9};
-    System.out.println(groupSum(0,arr,0));
+    int[] arr = {2,2};
+    System.out.println(splitArray(arr));
   }
   public static boolean groupSum(int start, int[] nums, int target) {
   //just PartialSum
@@ -15,7 +15,7 @@ public static boolean splitArray(int[] nums) {
   return splitArray(0,0,0,nums);
 }
 public static boolean splitArray(int i, int t1, int t2, int[] nums){
-if(i == nums.length-1)return t1 == t2;
+if(i == nums.length)return t1 == t2;
 if(splitArray(i+1,t1-nums[i],t2,nums) ||  splitArray(i+1,t1,t2-nums[i],nums)){
 return true;
 }
