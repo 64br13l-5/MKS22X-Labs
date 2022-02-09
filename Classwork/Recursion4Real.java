@@ -16,7 +16,7 @@ public static boolean splitArray(int[] nums) {
 }
 public static boolean splitArray(int i, int t1, int t2, int[] nums){
 if(i == nums.length-1)return t1 == t2;
-if(splitArray(start+1,nums,t1-nums[start],t2) ||  splitArray(start+1,nums,t1,t2-nums[start])){
+if(splitArray(i+1,t1-nums[i],t2,nums) ||  splitArray(i+1,t1,t2-nums[i],nums)){
 return true;
 }
 return false;
