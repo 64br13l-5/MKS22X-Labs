@@ -14,8 +14,9 @@ if(start == nums.length)return target ==0;
 if(nums[start] == 6)return (groupSum6(start+1,nums,target-nums[start]));
 return (groupSum6(start+1,nums,target-nums[start]) ||  groupSum6(start+1,nums,target));
 }
-public boolean groupNoAdj(int start, int[] nums, int target) {
+public static boolean groupNoAdj(int start, int[] nums, int target) {
   if(start == nums.length)return target==0;
+  if(start == nums.length-1) return (groupNoAdj(start+1,nums,target-nums[start]) ||  groupNoAdj(start+1,nums,target));
   return (groupNoAdj(start+2,nums,target-nums[start]) ||  groupNoAdj(start+1,nums,target));
 }
 
