@@ -64,4 +64,19 @@ if(nums[start] %5 == 0){
 }
 return (groupSum5(start+1,nums,target-nums[start]) ||  groupSum5(start+1,nums,target));
 }
+public static boolean groupSumClump(int start, int[] nums, int target) {
+//just PartialSum
+
+if(start == nums.length)return target ==0;
+  if(start != nums.length-1){
+    int x = 0;
+    int i = start;
+    while(i < nums.length && nums[i] == nums[start]){
+      i++;
+      x++;
+    }
+  return  (groupSumClump(start+x,nums,target-nums[start]*x) ||  groupSumClump(start+x,nums,target));
+  }
+return (groupSumClump(start+1,nums,target-nums[start]) ||  groupSumClump(start+1,nums,target));
+}
 }
