@@ -1,7 +1,13 @@
 public  class Recursion4Real{
   public static void main (String[] args){
-    int[] arr = {2,2};
-    System.out.println(splitArray(arr));
+
+            String[][]wordlists = {
+              {"The dog", "The pro skater"},
+              {"plays" , "empathises with" },
+              {"chess", "ball", "the voiceless masses"}
+            };
+            permute(wordlists,"",0);
+
   }
   public static boolean groupSum(int start, int[] nums, int target) {
   if(start == nums.length)return target==0;
@@ -79,4 +85,12 @@ if(start == nums.length)return target ==0;
   }
 return (groupSumClump(start+1,nums,target-nums[start]) ||  groupSumClump(start+1,nums,target));
 }
+public static void permute(String[][]lists, String sentence, int current){
+  if(current == lists.length) System.out.println(sentence);
+  for(int i  =0; i< lists[current].length; i++){
+    permute(lists, sentence +" " +lists[current][i],current+1);
+  }
+
+
+         }
 }
