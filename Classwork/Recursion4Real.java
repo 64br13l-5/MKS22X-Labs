@@ -30,12 +30,13 @@ return true;
 }
 return false;
 }
-public static boolean splitOdd10(int[] nums) {
+public boolean splitOdd10(int[] nums) {
   return splitOdd10(0,0,0,nums);
 }
-public static boolean splitOdd10(int i, int t1, int t2, int[] nums){
-if(i == nums.length)return t1 == 10 && t2 % 2 != 0;
-if(splitArray(i+1,t1-nums[i],t2,nums) ||  splitArray(i+1,t1,t2-nums[i],nums)){
+public  boolean splitOdd10(int i, int t1, int t2, int[] nums){
+if(nums.length ==1 ) return (nums[i] % 2 != 0 || nums[i] == 10);
+if(i == nums.length)return (t1 == 10 && t2 % 2 != 0) || (t2 == 10 && t1 % 2 != 0);
+if(splitOdd10(i+1,t1+nums[i],t2,nums) ||  splitOdd10(i+1,t1,t2+nums[i],nums)){
 return true;
 }
 return false;
