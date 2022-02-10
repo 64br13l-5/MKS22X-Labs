@@ -47,8 +47,8 @@ public  boolean split53(int[] nums) {
 public  boolean split53(int i, int t1, int t2, int[] nums){
 if(i == nums.length)return t1 == t2;
 if(nums[i]% 5 ==0 ){if(split53(i+1,t1-nums[i],t2,nums)) return true;}
-if(nums[i]% 3 ==0 ){if(split53(i+1,t1,t2-nums[i],nums)) return true;}
-if(split53(i+1,t1-nums[i],t2,nums) ||  split53(i+1,t1,t2-nums[i],nums)){
+else if(nums[i]% 3 ==0 ){if(split53(i+1,t1,t2-nums[i],nums)) return true;}
+else if(split53(i+1,t1-nums[i],t2,nums) ||  split53(i+1,t1,t2-nums[i],nums)){
 return true;
 }
 return false;
