@@ -87,9 +87,11 @@ return (groupSumClump(start+1,nums,target-nums[start]) ||  groupSumClump(start+1
 }
 public static void permute(String[][]lists, String sentence, int current){
   if(current == lists.length) System.out.println(sentence);
+  else{
   for(int i  =0; i< lists[current].length; i++){
     permute(lists, sentence +" " +lists[current][i],current+1);
   }
+}
 
 
          }
