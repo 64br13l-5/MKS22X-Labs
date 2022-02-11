@@ -8,24 +8,25 @@ public  class Recursion4Real{
             };
             permute(wordlists,"",0);
 
-  }
+}
+/////////////////////////////////////////////////////////////////////////
   public static boolean groupSum(int start, int[] nums, int target) {
   if(start == nums.length)return target==0;
   return (groupSum(start+1,nums,target-nums[start]) ||  groupSum(start+1,nums,target));
 }
+/////////////////////////////////////////////////////////////////////////
 public static boolean groupSum6(int start, int[] nums, int target) {
-//just PartialSum
-
 if(start == nums.length)return target ==0;
 if(nums[start] == 6)return (groupSum6(start+1,nums,target-nums[start]));
 return (groupSum6(start+1,nums,target-nums[start]) ||  groupSum6(start+1,nums,target));
 }
+/////////////////////////////////////////////////////////////////////////
 public static   boolean groupNoAdj(int start, int[] nums, int target) {
   if(start == nums.length)return target==0;
   if(start == nums.length-1) return (groupNoAdj(start+1,nums,target-nums[start]) ||  groupNoAdj(start+1,nums,target));
   return (groupNoAdj(start+2,nums,target-nums[start]) ||  groupNoAdj(start+1,nums,target));
 }
-
+/////////////////////////////////////////////////////////////////////////
 public static boolean splitArray(int[] nums) {
   return splitArray(0,0,0,nums);
 }
@@ -36,6 +37,7 @@ return true;
 }
 return false;
 }
+/////////////////////////////////////////////////////////////////////////
 public boolean splitOdd10(int[] nums) {
   return splitOdd10(0,0,0,nums);
 }
@@ -47,6 +49,7 @@ return true;
 }
 return false;
 }
+/////////////////////////////////////////////////////////////////////////
 public  boolean split53(int[] nums) {
   return split53(0,0,0,nums);
 }
@@ -59,6 +62,7 @@ return true;
 }
 return false;
 }
+/////////////////////////////////////////////////////////////////////////
 public static boolean groupSum5(int start, int[] nums, int target) {
 //just PartialSum
 
@@ -70,21 +74,17 @@ if(nums[start] %5 == 0){
 }
 return (groupSum5(start+1,nums,target-nums[start]) ||  groupSum5(start+1,nums,target));
 }
+/////////////////////////////////////////////////////////////////////////
 public static boolean groupSumClump(int start, int[] nums, int target) {
-//just PartialSum
-
-if(start == nums.length)return target ==0;
-  if(start != nums.length-1){
-    int x = 0;
-    int i = start;
-    while(i < nums.length && nums[i] == nums[start]){
-      i++;
-      x++;
+  if(start == nums.length)return target ==0;
+    if(start != nums.length-1){
+      int i = start;
+      while(i < nums.length && nums[i] == nums[start])i++;
+    return  (groupSumClump(i,nums,target-nums[start]*(i-start)) ||  groupSumClump(i,nums,target));
     }
-  return  (groupSumClump(start+x,nums,target-nums[start]*x) ||  groupSumClump(start+x,nums,target));
-  }
-return (groupSumClump(start+1,nums,target-nums[start]) ||  groupSumClump(start+1,nums,target));
+  return (groupSumClump(start+1,nums,target-nums[start]) ||  groupSumClump(start+1,nums,target));
 }
+/////////////////////////////////////////////////////////////////////////
 public static void permute(String[][]lists, String sentence, int current){
   if(current == lists.length) System.out.println(sentence);
   else{
