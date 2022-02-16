@@ -21,6 +21,15 @@ class Text{
           }
 public class QueenBoard{
   private int[][] Board;
+  private boolean animated = false;
+  private int delay;
+  public void setAnimate(boolean newValue){
+    animated = newValue;
+  }
+  public void setDelay(int newValue) {
+    if (newValue<0) delay = 0;
+    else delay = newValue;
+  }
   public QueenBoard(int size){
     Board = new int[size][size];
   }
@@ -29,7 +38,7 @@ public class QueenBoard{
     for(int i = 0; i < Board.length;i++){
       for(int j = 0; j < Board[i].length;j++){
       if(Board[i][j] == 1) output +="Q ";
-      else if(Board[i][j] < 0) output +="N ";
+
       else output +="_ ";
     }
      output += "\n";
@@ -41,8 +50,10 @@ public class QueenBoard{
     Board[i+r][c]--;
     try{
       Board[i+r][c+i]--;
-      Board[i+r][c-i]--;
     }catch(Exception e){}
+      try{
+        Board[i+r][c-i]--;
+      }catch(Exception e){}
   }
     return true;
      }
@@ -52,8 +63,10 @@ public class QueenBoard{
        Board[i+r][c]++;
        try{
          Board[i+r][c+i]++;
-         Board[i+r][c-i]++;
        }catch(Exception e){}
+         try{
+           Board[i+r][c-i]++;
+         }catch(Exception e){}
      }
       }
 public boolean IsBlank(){
@@ -68,10 +81,15 @@ public boolean solve(){
   return solve(0);
 }
 public boolean solve(int row){
-  if(row == 8) return true;
+  if(row == Board.length) return true;
   else{
     for(int i  = 0; i < Board[row].length; i++){
       if(addQueen(row,i)){
+        if(animated){
+           System.out.println(Text.go(1,1));
+           System.out.println(this);//can modify here
+           Text.wait(delay);
+         }
 
         if(solve(row+1)) return true;
         removeQueen(row,i);
@@ -85,16 +103,17 @@ public int countSolutions(){
   return countSolutions(0);
            }
 public int countSolutions(int row){
-  if(row == 8)return  1;
+  int num = 0;
+  if(row == Board.length)return  1;
   else{
     for(int i  = 0; i < Board[row].length; i++){
       if(addQueen(row,i)){
-      //change the delay 1000 = 1 second
-        if(solve(row+1)) return 1 +countSolutions(row+1);
-        removeQueen(row,i);
+        num += countSolutions(row+1);
+          removeQueen(row,i);
       }
+    }  return  num;
     }
-    return   countSolutions(row+1);}
+
 }
 
 }
