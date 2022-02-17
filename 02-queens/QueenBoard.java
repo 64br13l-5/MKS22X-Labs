@@ -35,14 +35,22 @@ public class QueenBoard{
   }
   public String toString(){
     String output = "";
+    output += "╔"; for(int i = 0; i <Board[0].length;i++) output += "══"; output +="╗\n";
     for(int i = 0; i < Board.length;i++){
-      for(int j = 0; j < Board[i].length;j++){
-      if(Board[i][j] == 1) output +="Q ";
+      output += "║";
 
-      else output +="_ ";
-    }
+            for(int j = 0; j < Board[i].length;j++){
+
+      if(Board[i][j] == 1){ if(i % 2 == 0 && j%2 != 0 || i % 2 != 0 && j%2 == 0) output +="\u001b[47;30m ♛"; else output += "\u001b[40m ♛";}
+
+      else if (i % 2 == 0 && j%2 != 0 || i % 2 != 0 && j%2 == 0)output +="\u001b[47m  ";
+      else output += "\u001b[40m  ";
+      output += "\u001b[0m";
+
+    }output += "║";
      output += "\n";
-  } return output;}
+  } output += "╚";
+   for(int i = 0; i <Board[0].length;i++) output += "══";output += "╝";return output;}
   public boolean addQueen(int r, int c){
     if(Board[r][c] != 0)return false;
     Board [r][c]++;
