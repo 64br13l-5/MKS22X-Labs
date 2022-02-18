@@ -20,9 +20,8 @@ public class Maze{
               }
     char[][] ret = new char[w][l];
     for(int i = 0; i < ret.length;i++){
-      for(int j = 0; j < ret[i].length;j++){
-        ret[i][j] = output.charAt(i*l+j);
-      }
+      String str = output.substring(i*w,(i+1)*w);
+      ret[i] = str.toCharArary();
     }
     return ret;
   }
