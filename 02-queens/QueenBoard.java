@@ -41,7 +41,7 @@ public class QueenBoard{
 
             for(int j = 0; j < Board[i].length;j++){
 
-      if(Board[i][j] == 1){ if(i % 2 == 0 && j%2 != 0 || i % 2 != 0 && j%2 == 0) output +="\u001b[47;30m ♛"; else output += "\u001b[40m ♛";}
+      if(Board[i][j] == 1){ if(i % 2 == 0 && j%2 != 0 || i % 2 != 0 && j%2 == 0) output +="\u001b[47;30m♛ "; else output += "\u001b[40m♛ ";}
 
       else if (i % 2 == 0 && j%2 != 0 || i % 2 != 0 && j%2 == 0)output +="\u001b[47m  ";
       else output += "\u001b[40m  ";
