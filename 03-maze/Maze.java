@@ -43,7 +43,7 @@ try{
               catch (InterruptedException e) {
               }
             }
-  public Maze(String filename){
+  public Maze(String filename) throws FileNotFoundException{
     maze = getMaze(filename);
   }
   public static void clearTerminal(){
@@ -54,25 +54,42 @@ try{
              //go to top left of screen
              System.out.println("\033[1;1H");
            }
+
   public int solve(){
               //only clear the terminal if you are running animation
               if(animate){
                 clearTerminal();
               }
+
               //start solving at the location of the s.
               return solve(startRow,startCol);
 
   }
+
   private int solve(int row, int col){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
+              int[][] dirs = { {0,1},{0,-1},{1,0},{-1,0}};
+
+
               if(animate){
                 gotoTop();
                 System.out.println(this);
                 wait(50);
               }
 
+              if(maze[row][col] == 'E') return 0;
+              maze[row][col] = '@';
+              for(int[] dir : dirs){
+              if(maze[row+dir[0]][col+dir[1]] != '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1]);
+
+             }
+               maze[row][col] = '.';
+               for(int[] dir:dirs){
+               if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row,col+dir[1]) -1;
+
+              }
               //COMPLETE SOLVE
-              return 0; //so it compiles
+              return -1; //so it compiles
   }
   public  String toString(){
     String output = "";
@@ -80,14 +97,23 @@ try{
       for(int j = 0; j < maze[i].length;j++){
         output += maze[i][j];
       }
-      output += "\n";
+      output   += "\n";
     }
     return output;
   }
-  public static void main(String[] args){
+  public static void main(String[]args){
 
-    Maze a = new Maze("Maze1.txt");
-    System.out.println(a);
+              //files do not require an extension like .txt or .dat
+              String filename = "Maze1.txt";
 
-  }
+              try{
+                Maze f;
+                f = new Maze(filename);
+                f.setAnimate(true);
+                System.out.println(f.solve()+" steps");
+                System.out.println(f);
+              }catch(FileNotFoundException e){
+                System.out.println("Invalid filename: "+filename);
+              }
+            }
 }
