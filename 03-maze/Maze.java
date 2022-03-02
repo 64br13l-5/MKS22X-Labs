@@ -65,28 +65,22 @@ try{
               return solve(startRow,startCol);
 
   }
-
+private   int[][] dirs = { {0,1},{0,-1},{1,0},{-1,0}};
   private int solve(int row, int col){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
-              int[][] dirs = { {0,1},{0,-1},{1,0},{-1,0}};
-
-
               if(animate){
                 gotoTop();
                 System.out.println(this);
                 wait(50);
               }
-
               if(maze[row][col] == 'E') return 0;
               maze[row][col] = '@';
               for(int[] dir : dirs){
               if(maze[row+dir[0]][col+dir[1]] != '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1]);
-
-             }
-               maze[row][col] = '.';
-               for(int[] dir:dirs){
-               if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row,col+dir[1]) -1;
-
+              }
+              maze[row][col] = '.';
+              for(int[] dir:dirs){
+              if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row+dir[0],col+dir[1])-1;
               }
               //COMPLETE SOLVE
               return -1; //so it compiles
