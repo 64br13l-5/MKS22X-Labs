@@ -105,7 +105,7 @@ private   int[][] dirs = { {0,1},{0,-1},{1,0},{-1,0}};
                 f = new Maze(filename);
                 f.setAnimate(true);
                 System.out.println(f.solve()+" steps");
-                System.out.println(f);
+
               }catch(FileNotFoundException e){
                 System.out.println("Invalid filename: "+filename);
               }
