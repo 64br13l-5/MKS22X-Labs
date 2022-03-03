@@ -23,14 +23,15 @@ public class MazeGenerator{
                              wait(50);
 
                              if(maze[row][col] == 'S') return 0;
-                                          maze[row][col] = '@';
+                                          maze[row][col] = ' ';
                                           Collections.shuffle(Arrays.asList(dirs));
                                           for(int[] dir : dirs){
-                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&maze[row+dir[0]][col+dir[1]] == '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1],maze);
+
+                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&(maze[row+dir[0]][col+dir[1]] == 'S' || maze[row+dir[0]][col+dir[1]] == '#')&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != ' ') return 1 +solve(row+dir[0],col+dir[1],maze);
                                           }
                                           maze[row][col] = '.';
                                           for(int[] dir:dirs){
-                                          if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row+dir[0],col+dir[1],maze)-1;
+                                          if(maze[row+dir[0]][col+dir[1]] == ' ') return solve(row+dir[0],col+dir[1],maze)-1;
                                           }
               //COMPLETE SOLVE
               return -1; //so it compiles
