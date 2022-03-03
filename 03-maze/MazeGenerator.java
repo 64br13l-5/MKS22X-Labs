@@ -1,20 +1,36 @@
 import java.util.*;
 public class MazeGenerator{
   private static int[][] dirs = { {0,1},{0,-1},{1,0},{-1,0}};
-
+  private static void wait(int millis){
+              try {
+                Thread.sleep(millis);
+              }
+              catch (InterruptedException e) {
+              }
+            }
+            public static void clearTerminal(){
+             //erase terminal
+             System.out.println("\033[2J");
+           }
+  public static void gotoTop(){
+             //go to top left of screen
+             System.out.println("\033[1;1H");
+           }
   public static int solve(int row, int col, char[][] maze){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
+              gotoTop();
+                             System.out.println(toStr(maze));
+                             wait(50);
 
-
-
-              if(maze[row][col] == 'S') return 0;
-              maze[row][col] = '@';
-              Random rand = new Random();
-              int rng = rand.nextInt(4);
-
-              if(maze[row+dirs[rng][0]][col+dirs[rng][1]] == '#') return 1 + solve(row+dirs[rng][0],col+dirs[rng][1],maze);
-
-
+                             if(maze[row][col] == 'S') return 0;
+                                          maze[row][col] = '@';
+                                          for(int[] dir : dirs){
+                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&maze[row+dir[0]][col+dir[1]] == '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1],maze);
+                                          }
+                                          maze[row][col] = '.';
+                                          for(int[] dir:dirs){
+                                          if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row+dir[0],col+dir[1],maze)-1;
+                                          }
               //COMPLETE SOLVE
               return -1; //so it compiles
   }
@@ -28,6 +44,7 @@ public class MazeGenerator{
     }
   maze[startrow][startcol] = 'S';
   maze[endrow][endcol] = 'E';
+  clearTerminal();
   solve(endrow,endcol,maze);
   }
   public static String toStr(char[][] maze){
