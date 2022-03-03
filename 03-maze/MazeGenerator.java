@@ -24,6 +24,7 @@ public class MazeGenerator{
 
                              if(maze[row][col] == 'S') return 0;
                                           maze[row][col] = '@';
+                                          Collections.shuffle(Arrays.asList(dirs));
                                           for(int[] dir : dirs){
                                           if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&maze[row+dir[0]][col+dir[1]] == '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1],maze);
                                           }
