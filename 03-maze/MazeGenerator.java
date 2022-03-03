@@ -16,6 +16,13 @@ public class MazeGenerator{
              //go to top left of screen
              System.out.println("\033[1;1H");
            }
+           public static int checkns(char[][] maze,int row, int col){
+             int ns = 0;
+             for(int[]dir:dirs){
+              if(maze[row+dir[0]][col+dir[1]]== '#' )ns++;
+             }
+             return ns;
+           }
   public static int solve(int row, int col, char[][] maze){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
               gotoTop();
@@ -25,9 +32,10 @@ public class MazeGenerator{
                              if(maze[row][col] == 'S') return 0;
                                           maze[row][col] = ' ';
                                           Collections.shuffle(Arrays.asList(dirs));
+
                                           for(int[] dir : dirs){
 
-                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&(maze[row+dir[0]][col+dir[1]] == 'S' || maze[row+dir[0]][col+dir[1]] == '#')&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != ' ') return 1 +solve(row+dir[0],col+dir[1],maze);
+                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&(maze[row+dir[0]][col+dir[1]] == 'S' || maze[row+dir[0]][col+dir[1]] == '#')) return 1 +solve(row+dir[0],col+dir[1],maze);
                                           }
                                           maze[row][col] = '.';
                                           for(int[] dir:dirs){
