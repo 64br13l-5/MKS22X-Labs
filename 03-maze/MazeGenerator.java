@@ -19,7 +19,7 @@ public class MazeGenerator{
            public static int checkns(char[][] maze,int row, int col){
              int ns = 0;
              for(int[]dir:dirs){
-              if(maze[row+dir[0]][col+dir[1]]== '#' )ns++;
+              if(maze[row+dir[0]][col+dir[1]]== ' '  || maze[row+dir[0]][col+dir[1]]== '.')ns++;
              }
              return ns;
            }
@@ -29,13 +29,13 @@ public class MazeGenerator{
                              System.out.println(toStr(maze));
                              wait(50);
 
-                             if(maze[row][col] == 'S') return 0;
-                                          maze[row][col] = ' ';
+
+                              if(maze[row][col] != 'E' && maze[row][col] != 'S')   maze[row][col] = ' ';
                                           Collections.shuffle(Arrays.asList(dirs));
 
                                           for(int[] dir : dirs){
 
-                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&(maze[row+dir[0]][col+dir[1]] == 'S' || maze[row+dir[0]][col+dir[1]] == '#')) return 1 +solve(row+dir[0],col+dir[1],maze);
+                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0&&checkns(maze,row+dir[0],col+dir[1]) <2 &&(maze[row+dir[0]][col+dir[1]] == 'S' || maze[row+dir[0]][col+dir[1]] == '#')) return 1 +solve(row+dir[0],col+dir[1],maze);
                                           }
                                           maze[row][col] = '.';
                                           for(int[] dir:dirs){
@@ -56,6 +56,11 @@ public class MazeGenerator{
   maze[endrow][endcol] = 'E';
   clearTerminal();
   solve(endrow,endcol,maze);
+  for(int i = 0; i < maze.length;i++){
+    for(int j = 0; j < maze[i].length;j++){
+     if(maze[i][j] == '.') maze[i][j] = ' ';
+    }
+}
   }
   public static String toStr(char[][] maze){
     String output = "";
