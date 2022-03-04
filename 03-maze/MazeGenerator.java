@@ -58,13 +58,25 @@ public class MazeGenerator{
               //COMPLETE SOLVE
               return -1; //so it compiles
   }
-  public static void generate(char[][] maze,int startrow, int startcol){
+  public static void generate(char[][] maze, int startrow,int startcol){
+
+
+      for(int i =0; i<maze.length;i++){
+        for(int j = 0; j<maze[0].length; j++){
+          maze[i][j] = '#';
+        }
+      }
+
+
+    generate(maze,startrow,startcol,1);
+  }
+  public static void generate(char[][] maze,int startrow, int startcol, int on){
     Random rng = new Random();//seed of 100 is stored.
     int endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
-    int endcol = Math.abs(rng.nextInt() % (maze.length-2))+1;
-    while(Math.abs(endrow - startrow) <= 1 || Math.abs(endcol - startcol) <= 1){
+    int endcol = Math.abs(rng.nextInt() % (maze[0].length-2))+1;
+    while((Math.abs(endrow - startrow) <= 1 || Math.abs(endcol - startcol) <=  1) ){
        endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
-       endcol = Math.abs(rng.nextInt() % (maze.length-2))+1;
+       endcol = Math.abs(rng.nextInt() % (maze[0].length-2))+1;
     }
   maze[startrow][startcol] = 'S';
   maze[endrow][endcol] = 'E';
@@ -89,7 +101,7 @@ else{
     }
 }
 maze[startrow][startcol] = 'S';
-} 
+}
   }
   public static String toStr(char[][] maze){
     String output = "";
@@ -111,7 +123,7 @@ maze[startrow][startcol] = 'S';
     return ret;
   }
   public static void main(String[] args){
-    char[][] n = mazegen(15);
+    char[][]n = new char[9][8];
     generate(n,1,1);
     System.out.println(toStr(n));
   }
