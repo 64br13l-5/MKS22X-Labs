@@ -25,12 +25,9 @@ public class MazeGenerator{
            }
   public static int solve(int row, int col, char[][] maze){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
-              gotoTop();
-                             System.out.println(toStr(maze));
-                             wait(50);
 
 
-                              if(maze[row][col] != 'E' && maze[row][col] != 'S')   maze[row][col] = ' ';
+                              if(maze[row][col] != 'E')   maze[row][col] = ' ';
                                           Collections.shuffle(Arrays.asList(dirs));
 
                                           for(int[] dir : dirs){
@@ -52,11 +49,11 @@ public class MazeGenerator{
               if(maze[row][col] == 'E') return 0;
               maze[row][col] = '@';
               for(int[] dir : dirs){
-              if(maze[row+dir[0]][col+dir[1]] != '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1],maze);
+              if(maze[row+dir[0]][col+dir[1]] != '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solvez(row+dir[0],col+dir[1],maze);
               }
               maze[row][col] = '.';
               for(int[] dir:dirs){
-              if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row+dir[0],col+dir[1],maze)-1;
+              if(maze[row+dir[0]][col+dir[1]] == '@') return solvez(row+dir[0],col+dir[1],maze)-1;
               }
               //COMPLETE SOLVE
               return -1; //so it compiles
@@ -71,14 +68,28 @@ public class MazeGenerator{
     }
   maze[startrow][startcol] = 'S';
   maze[endrow][endcol] = 'E';
-  clearTerminal();
   solve(endrow,endcol,maze);
-  if(solvez(startrow,startcol,maze) == -1) generate(maze,startrow,startcol);
   for(int i = 0; i < maze.length;i++){
     for(int j = 0; j < maze[i].length;j++){
      if(maze[i][j] == '.') maze[i][j] = ' ';
     }
 }
+  if(solvez(startrow,startcol,maze) == -1) {
+    for(int i = 0; i < maze.length;i++){
+      for(int j = 0; j < maze[i].length;j++){
+      maze[i][j] = '#';
+      }
+  }
+    generate(maze,startrow,startcol);
+}
+else{
+  for(int i = 0; i < maze.length;i++){
+    for(int j = 0; j < maze[i].length;j++){
+     if(maze[i][j] == '@' ||maze[i][j] == '.') maze[i][j] = ' ';
+    }
+}
+maze[startrow][startcol] = 'S';
+} 
   }
   public static String toStr(char[][] maze){
     String output = "";
