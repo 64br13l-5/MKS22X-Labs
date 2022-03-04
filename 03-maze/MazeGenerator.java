@@ -44,6 +44,23 @@ public class MazeGenerator{
               //COMPLETE SOLVE
               return -1; //so it compiles
   }
+
+
+  private static int solvez(int row, int col,char[][] maze){ //you can add more parameters since this is private
+              //automatic animation! You are welcome.
+
+              if(maze[row][col] == 'E') return 0;
+              maze[row][col] = '@';
+              for(int[] dir : dirs){
+              if(maze[row+dir[0]][col+dir[1]] != '#'&& maze[row+dir[0]][col+dir[1]] != '.' && maze[row+dir[0]][col+dir[1]] != '@') return 1 +solve(row+dir[0],col+dir[1],maze);
+              }
+              maze[row][col] = '.';
+              for(int[] dir:dirs){
+              if(maze[row+dir[0]][col+dir[1]] == '@') return solve(row+dir[0],col+dir[1],maze)-1;
+              }
+              //COMPLETE SOLVE
+              return -1; //so it compiles
+  }
   public static void generate(char[][] maze,int startrow, int startcol){
     Random rng = new Random();//seed of 100 is stored.
     int endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
@@ -56,6 +73,7 @@ public class MazeGenerator{
   maze[endrow][endcol] = 'E';
   clearTerminal();
   solve(endrow,endcol,maze);
+  if(solvez(startrow,startcol,maze) == -1) generate(maze,startrow,startcol);
   for(int i = 0; i < maze.length;i++){
     for(int j = 0; j < maze[i].length;j++){
      if(maze[i][j] == '.') maze[i][j] = ' ';
