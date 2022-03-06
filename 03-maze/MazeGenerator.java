@@ -71,10 +71,10 @@ public class MazeGenerator{
     generate(maze,startrow,startcol,1);
   }
   public static void generate(char[][] maze,int startrow, int startcol, int on){
-    Random rng = new Random();//seed of 100 is stored.
+    Random rng = new Random();//seed of 100 is stored.wwwwwwwwwww
     int endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
     int endcol = Math.abs(rng.nextInt() % (maze[0].length-2))+1;
-    while((Math.abs(endrow - startrow) <= 1 || Math.abs(endcol - startcol) <=  1) ){
+    while((Math.abs(endrow - startrow) == 0 || Math.abs(endcol - startcol) ==  0) ){
        endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
        endcol = Math.abs(rng.nextInt() % (maze[0].length-2))+1;
     }
