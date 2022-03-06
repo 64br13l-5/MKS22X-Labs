@@ -36,7 +36,7 @@ public class MazeGenerator{
                                           }
                                           maze[row][col] = '.';
                                           for(int[] dir:dirs){
-                                          if(maze[row+dir[0]][col+dir[1]] == ' ') return solve(row+dir[0],col+dir[1],maze)-1;
+                                          if(row + dir[0] < maze.length-1 &&col + dir[1] < maze[0].length-1&& row + dir[0] > 0 && col + dir[1]  > 0 && maze[row+dir[0]][col+dir[1]] == ' ') return solve(row+dir[0],col+dir[1],maze)-1;
                                           }
               //COMPLETE SOLVE
               return -1; //so it compiles
@@ -71,10 +71,10 @@ public class MazeGenerator{
     generate(maze,startrow,startcol,1);
   }
   public static void generate(char[][] maze,int startrow, int startcol, int on){
-    Random rng = new Random();//seed of 100 is stored.wwwwwwwwwww
+    Random rng = new Random();//seed of 100 is stored.
     int endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
     int endcol = Math.abs(rng.nextInt() % (maze[0].length-2))+1;
-    while((Math.abs(endrow - startrow) == 0 || Math.abs(endcol - startcol) ==  0) ){
+    while(((Math.abs(endrow - startrow) == 0 && Math.abs(endcol - startcol) ==  0) && (maze.length <= 4 || maze[0].length <= 4 )) || ((Math.abs(endrow - startrow) <= 1 && Math.abs(endcol - startcol)  <= 1) && (maze.length > 4 || maze[0].length > 4 ))){
        endrow = Math.abs(rng.nextInt() % (maze.length-2))+1;
        endcol = Math.abs(rng.nextInt() % (maze[0].length-2))+1;
     }
@@ -123,7 +123,7 @@ maze[startrow][startcol] = 'S';
     return ret;
   }
   public static void main(String[] args){
-    char[][]n = new char[9][8];
+    char[][]n = new char[4][4];
     generate(n,1,1);
     System.out.println(toStr(n));
   }
