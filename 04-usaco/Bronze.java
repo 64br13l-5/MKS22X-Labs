@@ -1,5 +1,7 @@
+import java.util.*;
+import java.io.*;
 public class Bronze{
-  private int[][] ary;
+  private static int[][] ary;
   public static void stomp(int R, int C, int D,int max){
     for(int i =0; i < 3; i++){
       for(int j =0; j < 3; j++){
@@ -11,13 +13,11 @@ public class Bronze{
 
 public static long solve(String filename){
     try{
-                    File maze = new File(file);
+                    File maze = new File(filename);
                     Scanner input = new Scanner(maze);
                     while (input.hasNextLine()) {
                       String next = input.nextLine();
-                       l = next.length();
-                       w++;
-                       output += next;
+
                     }
                     input.close();//releases the file from your program
                   }
@@ -25,4 +25,3 @@ public static long solve(String filename){
                     e.printStackTrace();
                   }
 }}
-private static final long serialVersionUID = l;
