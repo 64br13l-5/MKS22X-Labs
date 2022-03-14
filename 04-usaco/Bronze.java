@@ -64,7 +64,7 @@ public static long solve(String filename){
                     input.close();//releases the file from your program
                   }
                   catch (FileNotFoundException e){
-                    e.printStackTrace();
+                    return -1;
                   }
-                  return 0;
+                  return -1;
 }}
