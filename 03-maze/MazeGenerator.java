@@ -26,7 +26,7 @@ public class MazeGenerator{
   public static int solve(int row, int col, char[][] maze){ //you can add more parameters since this is private
               //automatic animation! You are welcome.
 
-
+				if(maze[row][col] == 'S') return 1;
                               if(maze[row][col] != 'E')   maze[row][col] = ' ';
                                           Collections.shuffle(Arrays.asList(dirs));
 
@@ -123,7 +123,7 @@ maze[startrow][startcol] = 'S';
     return ret;
   }
   public static void main(String[] args){
-    char[][]n = new char[4][4];
+    char[][]n = new char[61][61];
     generate(n,1,1);
     System.out.println(toStr(n));
   }
