@@ -1,15 +1,19 @@
 import java.util.*;
 public class Quick{
+  public static void swap(int[] data, int a, int b){
+    int val = data[a];
+    data[a] = data[b];
+    data[b] = val;
+  }
   public static int partition ( int [] data, int start, int end){
     if(end == start) return end;
     Random rng = new Random();
     int pivot = start + rng.nextInt(end-start);
     int val = data[pivot];
-    data[pivot] = data[start];
-    data[start] = val;
+    swap(data,pivot,start);
     pivot = start;
     int i = start+1;
-   while (i<=end){
+    while (i<=end){
       if(data[i] < val) {
         i++;pivot++;
       }
@@ -20,8 +24,7 @@ public class Quick{
         end--;
       }
     }
-    data[start] = data[pivot];
-    data[pivot]=val;
+    swap(data,pivot,start);
     return pivot;
 }
 public static void quicksort(int[] data){
@@ -34,6 +37,13 @@ public static void quicksort(int[] data, int s, int e){
   int i = partition(data,s,e);
   quicksort(data,i+1,e);
   quicksort(data,s,i);
+}
+public static int[] arrgen(int len){
+  int[] arr = new int[len];
+  for(int i = 0;i< len;i++){
+    arr[i]=(int)(Math.random() * 10000 -5000);
+  }
+  return arr;
 }
 /*return the value that is the kth smallest value of the array.
 *@param data must have a length > 0
@@ -50,9 +60,13 @@ public static int quickselect(int []data, int k){
 }
 }
 public static void main(String[] args){
-  int [] data = new int[] {5,1,7,26,36,2,15,2,567,9,3,36};
- quicksort(data);
- System.out.println(Arrays.toString(data));
+  int[] nums =
+    arrgen(1000000);
+
+  int[] nums2 = nums.clone();
+  quicksort(nums);
+  Arrays.sort(nums2);
+  if(Arrays.equals(nums,nums2)) System.out.println("Big Random Array Works");
 
 }
 
