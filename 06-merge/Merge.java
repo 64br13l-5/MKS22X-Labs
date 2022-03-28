@@ -8,7 +8,9 @@ public static int[] arrgen(int len){
   }
   return arr;
 }
+public static void merge(int[]destination, int[]temp, int leftIndex,int rightIndex , int middleIndex ){
 
+}
   public static int[] merge(int [] left, int[] right){
           //return a new array that is the merged version of left and right
           int[] sol = new int[left.length+right.length];
