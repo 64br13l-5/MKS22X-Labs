@@ -34,28 +34,43 @@ public class MyDeque<E>{
     }
     public int size(){ return size;}
     public String toStringDebug(){ return Arrays.toString(data);}
-
-    public void addFirst(E element){
+    public String toString(){
+      String out = "[";
+      for(int i = 0; i < start;i++){
+        out+= data[i]+ ", ";
+      }
+      for(int i = data.length-1; i >end+1;i--){
+        out += data[i] + ", ";
+      }
+      return out + data[end+1] +"]";
+    }
+    public void addFirst(E element) throws NullPointerException{
+      if(element == null) throw new NullPointerException(e);
       if(start == end+1) resize();
       data[start++] = element;
       size++;
     }
-    public void addLast(E element){
+    public void addLast(E element) throws NullPointerException{
+      if(element == null) throw new NullPointerException(e);
       if(start == end+1) resize();
     data[end--] = element;
   size++;}
-    public E removeFirst(){
+    public E removeFirst() throws NoSuchElementException {
+      if(size == 0) throw new NoSuchElementException(e);
       E d = data[start-1];
-      data[(start++)-1] = null;
+      data[(start)-1] = null;
     size--;
+    start--;
     return d;
     }
-    public E removeLast(){
+    public E removeLast()throws NoSuchElementException{
+        if(size == 0) throw new NoSuchElementException(e);
       E d = data[end+1];
-      data[(end--)+1] = null;
+      data[(end)+1] = null;
+      end++;
     size--;
     return d;
     }
-    public E getFirst(){return data[start-1]; }
-    public E getLast(){ return data[end+1];}
+    public E getFirst()throws NoSuchElementException{  if(size == 0) throw new NoSuchElementException;return data[start-1]; }
+    public E getLast()throws NoSuchElementException{   if(size == 0) throw new NoSuchElementException;return data[end+1];}
 }
