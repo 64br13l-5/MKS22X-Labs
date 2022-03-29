@@ -2,8 +2,8 @@ import java.util.*;
 public class MyDeque<E>{
     private E[] data;
     private int size;
-    public int start, end;
-    public void resize(){
+    private int start, end;
+    private void resize(){
         @SuppressWarnings("unchecked")
       E[] d = (E[])new Object[data.length*2];
       for(int i = 0; i < start;i++){
@@ -45,12 +45,14 @@ public class MyDeque<E>{
       return out + data[end+1] +"]";
     }
     public void addFirst(E element) {
+  
       if(element == null) throw new NullPointerException("cannot add null value");
       if(start == end+1) resize();
       data[start++] = element;
       size++;
     }
     public void addLast(E element) {
+
       if(element == null) throw new NullPointerException("cannot add null value");
       if(start == end+1) resize();
     data[end--] = element;
