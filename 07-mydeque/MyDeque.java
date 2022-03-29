@@ -44,33 +44,33 @@ public class MyDeque<E>{
       }
       return out + data[end+1] +"]";
     }
-    public void addFirst(E element) throws NullPointerException{
-      if(element == null) throw new NullPointerException(e);
+    public void addFirst(E element) {
+      if(element == null) throw new NullPointerException("cannot add null value");
       if(start == end+1) resize();
       data[start++] = element;
       size++;
     }
-    public void addLast(E element) throws NullPointerException{
-      if(element == null) throw new NullPointerException(e);
+    public void addLast(E element) {
+      if(element == null) throw new NullPointerException("cannot add null value");
       if(start == end+1) resize();
     data[end--] = element;
   size++;}
-    public E removeFirst() throws NoSuchElementException {
-      if(size == 0) throw new NoSuchElementException(e);
+    public E removeFirst(){
+      if(size == 0) throw new NoSuchElementException("array is empty");
       E d = data[start-1];
       data[(start)-1] = null;
     size--;
     start--;
     return d;
     }
-    public E removeLast()throws NoSuchElementException{
-        if(size == 0) throw new NoSuchElementException(e);
+    public E removeLast(){
+        if(size == 0) throw new NoSuchElementException("array is empty");
       E d = data[end+1];
       data[(end)+1] = null;
       end++;
     size--;
     return d;
     }
-    public E getFirst()throws NoSuchElementException{  if(size == 0) throw new NoSuchElementException;return data[start-1]; }
-    public E getLast()throws NoSuchElementException{   if(size == 0) throw new NoSuchElementException;return data[end+1];}
+    public E getFirst(){  if(size == 0) throw new NoSuchElementException("array is empty");return data[start-1]; }
+    public E getLast() {   if(size == 0) throw new NoSuchElementException("array is empty");return data[end+1];}
 }
