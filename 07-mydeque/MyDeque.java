@@ -36,19 +36,24 @@ public class MyDeque<E>{
     public String toStringDebug(){ return Arrays.toString(data);}
     public String toString(){
       String out = "[";
-      for(int i = 0; i < start;i++){
+      if(size == 0) return "[]";
+      for(int i = start-1; i>=0;i--){
+          if(end == data.length-1 && i ==0) return out + data[0] + "]";
         out+= data[i]+ ", ";
       }
+
       for(int i = data.length-1; i >end+1;i--){
+
         out += data[i] + ", ";
       }
-      return out + data[end+1] +"]";
+      return out + data[end+1]+"]";
     }
     public void addFirst(E element) {
-  
+
       if(element == null) throw new NullPointerException("cannot add null value");
       if(start == end+1) resize();
-      data[start++] = element;
+      data[start] = element;
+      start++;
       size++;
     }
     public void addLast(E element) {
