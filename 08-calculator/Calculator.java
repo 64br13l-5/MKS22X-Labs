@@ -27,6 +27,9 @@
                   break;
             case "-":d.addLast(b - a);
                   break;
+            case "%":d.addLast(b % a);
+                  break;
+
             }
           }
       }
