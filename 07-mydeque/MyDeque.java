@@ -22,7 +22,7 @@ public class MyDeque<E>{
         data = d;
         start = 0;
         size = 0;
-        end = d.length-1;
+        end = d.length;
     }
     public MyDeque(int initialCapacity){
       @SuppressWarnings("unchecked")
@@ -30,7 +30,7 @@ public class MyDeque<E>{
       data = d;
       start = 0;
       size = 0;
-      end = d.length-1;
+      end = d.length;
     }
     public int size(){ return size;}
     public String toStringDebug(){ return Arrays.toString(data);}
@@ -38,20 +38,20 @@ public class MyDeque<E>{
       String out = "[";
       if(size == 0) return "[]";
       for(int i = start-1; i>=0;i--){
-          if(end == data.length-1 && i ==0) return out + data[0] + "]";
+          if(end == data.length && i ==0) return out + data[0] + "]";
         out+= data[i]+ ", ";
       }
 
-      for(int i = data.length-1; i >end+1;i--){
+      for(int i = data.length-1; i >end;i--){
 
         out += data[i] + ", ";
       }
-      return out + data[end+1]+"]";
+      return out + data[end]+"]";
     }
     public void addFirst(E element) {
 
       if(element == null) throw new NullPointerException("cannot add null value");
-      if(start == end+1) resize();
+      if(start == end) resize();
       data[start] = element;
       start++;
       size++;
@@ -59,8 +59,9 @@ public class MyDeque<E>{
     public void addLast(E element) {
 
       if(element == null) throw new NullPointerException("cannot add null value");
-      if(start == end+1) resize();
-    data[end--] = element;
+      if(start == end) resize();
+    data[end-1] = element;
+    end--;
   size++;}
     public E removeFirst(){
       if(size == 0) throw new NoSuchElementException("array is empty");
@@ -72,8 +73,8 @@ public class MyDeque<E>{
     }
     public E removeLast(){
         if(size == 0) throw new NoSuchElementException("array is empty");
-      E d = data[end+1];
-      data[(end)+1] = null;
+      E d = data[end];
+      data[end] = null;
       end++;
     size--;
     return d;
