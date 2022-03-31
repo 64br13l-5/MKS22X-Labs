@@ -16,8 +16,8 @@
           try{d.addLast(Double.parseDouble(x));}
           catch(Exception e) {
             if(d.size() < 2) throw new IllegalArgumentException("too many operators");
-            var a = d.removeLast();
-            var b = d.removeLast();
+            var a = d.pop();
+            var b = d.pop();
             switch(x) {
             case "*": d.addLast(b * a);
                   break;
