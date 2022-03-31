@@ -13,7 +13,7 @@
         Scanner input = new Scanner(s);
         while(input.hasNext()) {
           var x = input.next();
-          try{d.addLast(Double.parseDouble(x));}
+          try{d.addLast(x);}
           catch(Exception e) {
             if(d.size() < 2) throw new IllegalArgumentException("too many operators");
             var a = d.removeLast();
@@ -25,7 +25,7 @@
                   break;
             case "/":d.addLast(b / a);
                   break;
-              case "-":d.addLast(b - a);
+            case "-":d.addLast(b - a);
                   break;
             }
           }
