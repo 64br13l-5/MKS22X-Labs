@@ -15,7 +15,7 @@
           var x = input.next();
           try{d.addLast(Double.parseDouble(x));}
           catch(Exception e) {
-            if(d.size() < 2) throw new IllegalArgumentException("too many operators");
+            if(d.size() < 2) throw new IllegalArgumentException("too few operands");
             var a = d.removeLast();
             var b = d.removeLast();
             switch(x) {
@@ -30,15 +30,11 @@
             }
           }
       }
-        if(d.size() > 1) throw new IllegalArgumentException("not enough operators");
+        if(d.size() > 1) throw new IllegalArgumentException("too many operands");
+        if(d.size() < 1) throw new IllegalArgumentException("too few operands");
         return d.getLast();
       }
       public static void main(String[] args){
 
-        System.out.println(eval("11 3 - 4 + 2.5 *"));
-        System.out.println(eval("10 2.0 +"));
-        System.out.println(eval("8 2 + 99 9 - * 2 + 9 -")) ;
-            System.out.println(eval("1 2 3 4 5 + * - -"));
-            System.out.println(eval("1 2 3 4 5 + * - - -"));
       }
     }
