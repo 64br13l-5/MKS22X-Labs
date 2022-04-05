@@ -29,12 +29,12 @@ public class BurnTrees{
       int[] coord = frontier.remove();
       map[coord[0]][coord[1]] = ASH;
       for(int[] dir : dirs){
-        if(coord[0]+dir[0] < map.length && coord[1]+dir[1] < map[0].length && map[coord[0]+dir[0]][coord[1]+dir[1]] == TREE){
+        if(coord[0]+dir[0] < map.length && coord[0]+dir[0] >=0 && coord[1]+dir[1] >=0 && coord[1]+dir[1] < map[0].length && map[coord[0]+dir[0]][coord[1]+dir[1]] == TREE){
             map[coord[0]+dir[0]][coord[1]+dir[1]] = FIRE;
             int[] loc = {(coord[0]+dir[0]),(coord[1]+dir[1])};
             frontier.add(loc);
         }
-        }
+
 
       }
     }
