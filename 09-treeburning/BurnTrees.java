@@ -78,7 +78,7 @@ public class BurnTrees{
   }
 
 
-
+    
     public static void main(String[]args){
       int WIDTH = 20;
       int HEIGHT = 20;
@@ -95,7 +95,7 @@ public class BurnTrees{
       BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
 
 
-      int ans = b.animate(DELAY);//animate all screens
+      int ans = b.run();//animate all screens
       System.out.println(ans);//print the final answer
 
       //int ans = b.outputAll();//print all screens one after another
@@ -149,11 +149,11 @@ public class BurnTrees{
       for (int c = 0; c < map[i].length; c++) {
         if(map[i][c]==0)
           builder.append(" ");
-        else if(map[i][c]==2)
+        else if(map[i][c]==TREE)
           builder.append(Text.color(Text.GREEN)+"@");
-        else if(map[i][c]==1)
+        else if(map[i][c]==FIRE)
           builder.append(Text.color(Text.RED)+"w");
-        else if(map[i][c]==3)
+        else if(map[i][c]==ASH)
           builder.append(Text.color(Text.DARK)+".");
       }
       builder.append("\n"+Text.RESET);
