@@ -5,20 +5,24 @@
 <pre>
 
 Q.  Why did you choose the board size for your finalized table?
+>A. I chose size 100 for my finalized table, as it is large enough to yield close to accurate results but not small enough to result in large processing times. 
 
-    A. I chose size 100 for my finalized table, as it is large enough to yield close to accurate results but not small enough to result in large processing times. 
 Q. Why did you choose the number of repetitions size for your finalized table?
 
-    A. I chose to use 100 repetitions, as it is enough to get a reasonably accurate average, but not enough to take a long time.
+>A. I chose to use 100 repetitions, as it is enough to get a reasonably accurate average, but not enough to take a long time. 
+
 Q. What did your testing show about changing the board size?
 
-    A. As board size increased, the density with the highest runtime neared 60%. 
+> A. As board size increased, the density with the highest runtime neared 60%. 
+
 Q. Knowing that there were differences based on boardsize, what was the relationship between the board size and the maximum burn time? How did you test this?
 
-    A. As the board size increased, the maximum burn time increased as well. This was tested by using board sizes from as low as 20 to as high as 2000
+>A. As the board size increased, the maximum burn time increased as well. This was tested by using board sizes from as low as 20 to as high as 2000
+
 Q. What density of trees yields the maximum burn time? 
 
-    A. The density with the maximum burn time seems to converge at 60% as the board gets larger. 
+>  A. The density with the maximum burn time seems to converge at 60% as the board gets larger. 
+
 </pre>
 </details>
 
