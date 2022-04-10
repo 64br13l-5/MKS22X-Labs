@@ -1,6 +1,6 @@
 public class Driver{
   public static void main(String[] args){
-    System.out.println(maxruntimePerDensity(100,100,0.05));
+    System.out.println(maxruntimePerDensity(100,2000,0.01));
   }
   public static double averageOfNRuns(int n, int size, double density){
     BurnTrees b;
@@ -14,10 +14,10 @@ public class Driver{
   public static String maxruntimePerDensity(int n, int size, double densityIncrement){
     double maxruntime = 0;
     double maxruntimedensity = 0;
-    double density = densityIncrement;
-    while(density < 1){
+    double density = 0.58;
+    while(density <= 0.65){
       double runtime = averageOfNRuns(n,size,density);
-      System.out.println( runtime + ", "+density);
+      System.out.println("| " +  (int)(density*100) + "% | "+runtime + " |");
       if(runtime > maxruntime){
         maxruntime = runtime;
         maxruntimedensity = density;
