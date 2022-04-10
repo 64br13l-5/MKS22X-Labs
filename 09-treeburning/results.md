@@ -4,7 +4,7 @@
 <br>
 <pre>
 
- Q.  Why did you choose the board size for your finalized table?
+Q.  Why did you choose the board size for your finalized table?
 
     A. I chose size 100 for my finalized table, as it is large enough to yield close to accurate results but not small enough to result in large processing times. 
 Q. Why did you choose the number of repetitions size for your finalized table?
