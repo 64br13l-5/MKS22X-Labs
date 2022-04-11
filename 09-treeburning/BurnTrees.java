@@ -81,7 +81,9 @@ public class BurnTrees{
     
  
   public static void main(String[] args){
-    System.out.println(maxruntimePerDensity(100,100,0.01));
+    System.out.println(maxruntimePerDensity(100,100,0.05,0,1));
+    System.out.println();
+    System.out.println(maxruntimePerDensity(20,2000,0.01,0.58,0.65));
   }
   public static double averageOfNRuns(int n, int size, double density){
     BurnTrees b;
@@ -92,11 +94,11 @@ public class BurnTrees{
     }
     return sum / 100;
   }
-  public static String maxruntimePerDensity(int n, int size, double densityIncrement){
+  public static String maxruntimePerDensity(int n, int size, double densityIncrement,double start, double end){
     double maxruntime = 0;
     double maxruntimedensity = 0;
-    double density = 0;
-    while(density <= 1){
+    double density = start;
+    while(density <= end){
       double runtime = averageOfNRuns(n,size,density);
       System.out.println("| " +  (int)(density*100) + "% | "+runtime + " |");
       if(runtime > maxruntime){
