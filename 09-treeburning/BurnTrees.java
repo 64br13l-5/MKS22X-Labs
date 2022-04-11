@@ -79,28 +79,35 @@ public class BurnTrees{
 
 
     
-    public static void main(String[]args){
-      int WIDTH = 20;
-      int HEIGHT = 20;
-      int DELAY = 200;
-      double DENSITY = .7;
-      if(args.length > 1){
-        WIDTH = Integer.parseInt(args[0]);
-        HEIGHT = Integer.parseInt(args[1]);
-        DENSITY = Double.parseDouble(args[2]);
-      }
-      if(args.length > 3){
-        DELAY = Integer.parseInt(args[3]);
-      }
-      BurnTrees b = new BurnTrees(WIDTH,HEIGHT,DENSITY);
-
-
-      int ans = b.run();//animate all screens
-      System.out.println(ans);//print the final answer
-
-      //int ans = b.outputAll();//print all screens one after another
-      //System.out.println(ans);//print the final answer
+ 
+  public static void main(String[] args){
+    System.out.println(maxruntimePerDensity(100,100,0.01));
+  }
+  public static double averageOfNRuns(int n, int size, double density){
+    BurnTrees b;
+    double sum = 0;
+    for(int i =0; i< n; i++){
+      b =  new BurnTrees(size,size,density);
+      sum += b.run();
     }
+    return sum / 100;
+  }
+  public static String maxruntimePerDensity(int n, int size, double densityIncrement){
+    double maxruntime = 0;
+    double maxruntimedensity = 0;
+    double density = 0;
+    while(density <= 1){
+      double runtime = averageOfNRuns(n,size,density);
+      System.out.println("| " +  (int)(density*100) + "% | "+runtime + " |");
+      if(runtime > maxruntime){
+        maxruntime = runtime;
+        maxruntimedensity = density;
+
+      }
+      density += densityIncrement;
+    }
+    return "maxruntime = " +maxruntime + ", density = "+maxruntimedensity;
+  }
 
 
 
