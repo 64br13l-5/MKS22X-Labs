@@ -83,7 +83,7 @@ public class BurnTrees{
   public static void main(String[] args){
     System.out.println(maxruntimePerDensity(100,100,0.05,0,1));
     System.out.println();
-    System.out.println(maxruntimePerDensity(20,2000,0.01,0.58,0.65));
+    System.out.println(maxruntimePerDensity(5,2000,0.01,0.57,0.65));
   }
   public static double averageOfNRuns(int n, int size, double density){
     BurnTrees b;
