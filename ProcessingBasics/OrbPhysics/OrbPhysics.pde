@@ -61,7 +61,6 @@
         if(int(this.y+radius) > height || this.y-radius < 0){
           this.y = height-radius;
        
-          println(ySpeed);
           
           ySpeed *= -0.9;
           
