@@ -3,6 +3,7 @@ Orb center;
 String MODE = "ORBIT";
 int mode = 1;
 int bg = 1;
+Orb last;
 int grav = 1;
 private static final float SPRING_CONSTANT = 0.005;
 private static final int SPRING_LENGTH = 150;
@@ -11,24 +12,32 @@ void setup() {
   size(1000, 800);
   orbList = new ArrayList<Orb>();
   center = new Orb(width/2, height/2, 10);
+  last = center;
 }
 void mouseClicked() {
+  Orb n = new Orb(float(mouseX), float(mouseY), 5, 0, 20);
 
-  orbList.add(new Orb(float(mouseX), float(mouseY), 5, 0, 20));
+  orbList.add(n);
+
   //add a new Orb to the orbList, constructed as follows:
   //The x and y positions are the same as the mouse
   //the radius should be between in the range [20.0,70.0)
   //the xSpeed and ySpeed should be in the range [-3.0,3.0)
 }
+
 void keyPressed() {
   if (key == BACKSPACE) {
     orbList.clear();
   }
   if (key == 32) {
     switch(mode) {
-    case 2: 
-      MODE = "SPRING"; 
+    case 3:
+      MODE = "SPRING";
       mode = 0;
+      break;
+    case 2: 
+      MODE = "CHAIN"; 
+      mode++;
       break;
     case 0: 
       MODE = "ORBIT";  
@@ -66,10 +75,18 @@ void draw() {
     background(255);
   center.display();
   for (Orb o : orbList) {
+    if (orbList.indexOf(o) > 0)
+      last = orbList.get(orbList.indexOf(o)-1);
+    else 
+    last = center;
     if (mode == 1)
       center.attract(o);
-    else if (mode == 0)
+    else if (mode == 0 )
       center.attractSpring(o);
+    else if (mode == 3) {
+      last.attractSpring(o);
+      o.attractSpring(last);
+    }
     o.move();
 
     o.display();
@@ -85,6 +102,7 @@ public class Orb {
   float x, y;
   float xSpeed, ySpeed;
   float radius;
+  boolean central;
   color c;
   float G;
   public void attract(Orb other) {
@@ -108,12 +126,14 @@ public class Orb {
     y = y_;
     radius = radius_;
     G = 20; 
+    central = true;
     //random color... why not.
     c = color(random(255), random(255), random(255));
   }
   public Orb(float x_, float y_, float xSpeed_, float ySpeed_, float radius_ ) {
     x = x_;
     y = y_;
+    central = false;
     xSpeed = xSpeed_;
     ySpeed = ySpeed_;
     radius = radius_;
@@ -131,6 +151,7 @@ public class Orb {
     ellipse(x, y, radius*2, radius*2);
     stroke(0);
     strokeWeight(5);
+    if (central) noStroke();
     line(x, y, x+(xSpeed*5), y+(ySpeed*5));
     //Part 1:
     //draw a ellipse at the x,y position, with the correct radius.
