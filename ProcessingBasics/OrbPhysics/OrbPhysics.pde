@@ -79,8 +79,7 @@ void draw() {
   text(orbList.size(), 20, 40);
   text(MODE, 20, 60);
   text(mode, 20, 80);
-  if(grav == 1) text("grav",20,100);
-  
+  if (grav == 1) text("grav", 20, 100);
 }
 public class Orb {
   float x, y;
@@ -98,14 +97,17 @@ public class Orb {
     float force = (d-SPRING_LENGTH)*SPRING_CONSTANT;
     other.xSpeed += force * ((x-other.x)/d);   
     other.ySpeed += force * ((y-other.y)/d);
-    other.x *= SPRING_DAMPEN;
-    other.y *= SPRING_DAMPEN;
+    other.xSpeed *= SPRING_DAMPEN;
+    other.ySpeed *= SPRING_DAMPEN;
+    stroke(30);
+    strokeWeight(2);
+    line(x, y, other.x, other.y);
   }
   public Orb(float x_, float y_, float radius_ ) {
     x = x_;
     y = y_;
     radius = radius_;
-    G = 20;
+    G = 20; 
     //random color... why not.
     c = color(random(255), random(255), random(255));
   }
