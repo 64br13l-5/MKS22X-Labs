@@ -23,12 +23,13 @@
         void display() {
           fill(c);
           ellipse(x, y, radius*2, radius*2);
-          while (prev != null){
+         if(prev != null)
             line(prev.x,prev.y,x,y);
-          }
-          while (next != null){
+            
+          
+          if(next != null)
             line(x,y,next.x,next.y);
-          }
+          
 
 
         }
@@ -61,8 +62,9 @@
         void move() {
           //have prev and next apply spring force to this node;
           /*you write this part*/
+          if (prev != null)
           prev.attractSpring(this);
-          this.attractSpring(next);
+         if (next != null) this.attractSpring(next);
           //apply velocity to position
           x+=dx;
           y+=dy;
