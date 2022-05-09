@@ -13,12 +13,10 @@
       }
       void draw() {
         background(255);
-        print("j");
         orbs.processAll();
-                print("j");
 
         orbs.display();
-                print("j");
+               
 
       }
     

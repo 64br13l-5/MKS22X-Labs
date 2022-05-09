@@ -14,10 +14,11 @@ public class OrbList {
         *complete this method
         */
         void add(OrbNode orb){
-          orb.prev = last.prev.prev;
+          orb.prev = last.prev;
+          last.prev.next = orb;
           orb.next = last; 
           last.prev = orb;
-         
+        
         }
 
         /**
