@@ -25,11 +25,8 @@ public class OrbNode {
     fill(c);
     ellipse(x, y, radius*2, radius*2);
     if (prev != null)
-      line(prev.x, prev.y, x-radius, y);
+      line(prev.x+radius, prev.y, x-radius, y);
 
-
-    if (next != null)
-      line(x+radius, y, next.x, next.y);
   }
 
   void springAttract(OrbNode other) {
@@ -67,7 +64,8 @@ public class OrbNode {
         x+=dx;
       y+=dy;
       //apply gravity
-      dy+=0.35;
+     
+      dy+=GRAVITY;
     }
   }
 
