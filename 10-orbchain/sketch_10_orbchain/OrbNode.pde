@@ -29,6 +29,13 @@ public class OrbNode {
 
   }
 
+  void display2() {
+    fill(0);
+    ellipse(x, y, radius*2, radius*2);
+    if (prev != null)
+      line(prev.x+radius, prev.y, x-radius, y);
+
+  }
   void springAttract(OrbNode other) {
     float dist = dist(x, y, other.x, other.y) ;
     float force = (dist - SPRING_LENGTH) * SPRING_CONSTANT;
