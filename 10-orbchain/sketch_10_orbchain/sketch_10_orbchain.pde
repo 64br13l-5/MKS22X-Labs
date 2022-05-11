@@ -16,6 +16,8 @@ void mouseClicked() {
   orbs.add(new OrbNode(mouseX, mouseY, 0, 0, 30));
   if(clickMode == 1)
     orbs.add(new OrbNode(mouseX,mouseY,0,0,30),mouseX);
+ if (clickMode == 2)
+     orbs.delete(orbs.getNodeAt(mouseX,mouseY));
 }
 void keyPressed() {
   if (key == '1') SPRING_CONSTANT *= 1.01; 

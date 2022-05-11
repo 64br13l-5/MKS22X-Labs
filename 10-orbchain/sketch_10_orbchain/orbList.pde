@@ -30,12 +30,12 @@ public class OrbList {
           last.prev = orb;
         
         }
-        void delete(OrbNode ord){
-          if(ord != null){
-             orb.next.prev = orb.next.prev;
-            last.prev.next = orb;
-            orb.next = last; 
-            last.prev = orb;
+        void delete(OrbNode orb){
+          if(orb != null){
+             orb.next.prev = orb.prev;
+             orb.prev.next = orb.next;
+
+
           }
         }
         OrbNode getNodeAt(int x, int y){
