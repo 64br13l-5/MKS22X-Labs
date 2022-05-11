@@ -13,6 +13,16 @@ public class OrbList {
         /**
         *complete this method
         */
+        void add(OrbNode orb, int xval){
+          OrbNode current = first;
+          while (current.x <=xval){
+            current = current.next;
+          }
+          orb.prev = current.prev;
+          current.prev.next = orb;
+          orb.next = current; 
+          current.prev = orb;
+        }
         void add(OrbNode orb){
           orb.prev = last.prev;
           last.prev.next = orb;
@@ -20,6 +30,24 @@ public class OrbList {
           last.prev = orb;
         
         }
+        void delete(OrbNode ord){
+          if(ord != null){
+             orb.next.prev = orb.next.prev;
+            last.prev.next = orb;
+            orb.next = last; 
+            last.prev = orb;
+          }
+        }
+        OrbNode getNodeAt(int x, int y){
+             OrbNode current = first.next;
+          while (current != last){
+            if(x < current.x +current.radius && x > current.x - current.radius && y<current.y+current.radius && x > current.y-current.radius)
+              return current;            
+            current = current.next;
+          }
+          return null; 
+        }
+        
 
         /**
         *complete this method
