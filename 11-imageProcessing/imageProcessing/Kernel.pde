@@ -1,10 +1,11 @@
-public class Kernel {
+class Kernel {
       float[][]kernel;
 
       /**Constructor takes the kernel that will be applied to the image
       *This implementation only allows 3x3 kernels
       */
       public Kernel(float[][]init) {
+        kernel = init.clone(); 
       }
 
       /**If part of the kernel is off of the image, return black, Otherwise
@@ -15,6 +16,7 @@ public class Kernel {
       color calcNewColor(PImage img, int x, int y) {
         //Hint: start by always returning black.
         //This will let you test your apply method right away!
+        return img.get(x,y);
 
       }
 
