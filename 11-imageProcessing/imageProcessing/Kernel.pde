@@ -14,9 +14,21 @@ class Kernel {
       *     0-255, then clamp it to that range (< 0 becomes 0, >255 becomes 255)
       */
       color calcNewColor(PImage img, int x, int y) {
+        float rsum;
+        float bsum;
+        float gsum;
+        x-=1;
+        y-=1;
+        for(int i = 0; i <3;i++){
+          for(int j  =0; j<3;j++){
+            if(!(x+i < 0 || x+i > img.width || y+i <0 || i+i>img.height))
+                   
+          }
+          
+        }
         //Hint: start by always returning black.
         //This will let you test your apply method right away!
-        return img.get(x,y);
+        return color(0);
 
       }
 
