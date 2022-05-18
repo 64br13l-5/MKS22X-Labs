@@ -15,8 +15,6 @@ class Kernel {
    */
   color calcNewColor(PImage img, int x, int y) {
     float r =0, b=0, g =0;
-    x-=1;
-    y-=1;
     for (int i = 0; i <3; i++) {
       for (int j  =0; j<3; j++) {
         if (x+i < 0 || x+i > img.width || y+j <0 || y+j>img.height)return color(0);
