@@ -5,7 +5,7 @@ class Kernel {
    *This implementation only allows 3x3 kernels
    */
   public Kernel(float[][]init) {
-    kernel = init.clone();
+    kernel = init;
   }
 
   /**If part of the kernel is off of the image, return black, Otherwise
